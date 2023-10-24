@@ -4,6 +4,7 @@ import MyShop from '../myShop'
 import NotFound from '../notFound'
 import Shop from '../shop'
 import SignIn from '../signIn'
+import Navbar from '../../componentes/Navbar'
 import './App.css'
 
 const AppRoutes =()=>{
@@ -21,6 +22,7 @@ const App=()=>{
   return (
     <BrowserRouter>
       <AppRoutes/>
+      <Navbar/>
     </BrowserRouter>
   )
 }
