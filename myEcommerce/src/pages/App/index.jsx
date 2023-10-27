@@ -1,4 +1,5 @@
 import {useRoutes, BrowserRouter} from 'react-router-dom'
+import { CarShopProvider } from '../../Context'
 import Home from '../Home'
 import MyShop from '../myShop'
 import NotFound from '../notFound'
@@ -6,6 +7,7 @@ import Shop from '../shop'
 import SignIn from '../signIn'
 import Navbar from '../../componentes/Navbar'
 import './App.css'
+// import Carousel from '../../componentes/Carousel'
 
 const AppRoutes =()=>{
   let routes=useRoutes([
@@ -19,11 +21,16 @@ const AppRoutes =()=>{
 }
 
 const App=()=>{
+  
   return (
-    <BrowserRouter>
+    <CarShopProvider>
+      <BrowserRouter>
       <AppRoutes/>
       <Navbar/>
+      {/* <Carousel /> */}
     </BrowserRouter>
+    </CarShopProvider>
+    
   )
 }
 export default App

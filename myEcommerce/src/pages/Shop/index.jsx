@@ -1,10 +1,12 @@
+import Layout from "../../componentes/Layout"
+
 function Shop() {
   
     return (
       <>
-        <div className='bg-orange-500'>
+        <Layout>
           shop
-        </div>
+        </Layout>
       </>
     )
   }
