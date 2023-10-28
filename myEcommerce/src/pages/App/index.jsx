@@ -6,6 +6,7 @@ import NotFound from '../notFound'
 import Shop from '../shop'
 import SignIn from '../signIn'
 import Navbar from '../../componentes/Navbar'
+import CheckoutSideMenu from '../../componentes/CheckoutSideMenu'
 import './App.css'
 // import Carousel from '../../componentes/Carousel'
 
@@ -28,6 +29,7 @@ const App=()=>{
       <AppRoutes/>
       <Navbar/>
       {/* <Carousel /> */}
+      <CheckoutSideMenu/>
     </BrowserRouter>
     </CarShopProvider>
     

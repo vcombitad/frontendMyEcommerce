@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom"
 import { CarShopContext } from "../../Context";
+import { BsCartCheckFill } from "react-icons/bs";
 
 const Navbar=()=>{
     const context= useContext(CarShopContext)
@@ -15,7 +16,7 @@ const Navbar=()=>{
                     isPending ? "pending" : isActive ? "active" : ""
                   }
                     to='/'>
-                        shopi
+                        Subtle Home
                     </NavLink>
                 </li>
                 <li>
@@ -84,9 +85,10 @@ const Navbar=()=>{
                         Sign In
                     </NavLink>
                 </li>
-                <li>
-                    {context.count}
+                <li className='flex justify-center'>
+                    <BsCartCheckFill/> <span>{context.count}</span>
                 </li>
+                <li></li>
                 
             </ul>
         </nav>
