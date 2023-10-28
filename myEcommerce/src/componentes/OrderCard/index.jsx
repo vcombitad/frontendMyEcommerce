@@ -1,7 +1,7 @@
 import { FaWindowClose } from "react-icons/fa";
 
 const OrderCard=props=>{
-    const {title, imageUrl, price} = props
+    const {id, title, imageUrl, price, handleDelete} = props
     return (
         <div className="flex justify-between items-center mb-2">
             <div className="flex items-center gap-2">
@@ -12,7 +12,7 @@ const OrderCard=props=>{
             </div>
             <div className="flex items-center gap-2">
                 <p className="text-lg font-medium">{price}</p>
-                <FaWindowClose/>
+                <FaWindowClose onClick={()=>handleDelete(id)}/>
 
             </div>
 
