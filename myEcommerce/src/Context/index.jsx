@@ -41,25 +41,50 @@ export const CarShopProvider=({children})=>{
 
     //Search by title
     const [searchByTitle, setSearchByTitle]= useState(null);
+
+    //Search by Category
+    const [searchByCategory, setSearchByCategory]= useState(null);
     console.log('searchByTitle: ', searchByTitle);
     
     
     useEffect(()=>{
-        fetch('http://localhost:3000/api/v1/products')
+        fetch('https://backendmyecommerce-production.up.railway.app/api/v1/products')
           .then(response=>(response.json()))
           .then(data=>setItems(data))
       },[])
 
-      const filteredItemsByTitle= (items, searchByTitle)=>{
-        return items?.filter(item=> item.name.toLowerCase().includes(searchByTitle.toLowerCase()))
+      const filteredItemsByTitle = (items, searchByTitle) => {
+        return items?.filter(item => item.name.toLowerCase().includes(searchByTitle.toLowerCase()))
       }
-
-      useEffect(() => {
-        if (searchByTitle) setFilteredItems(filteredItemsByTitle(items, searchByTitle))
-      }, [items, searchByTitle])
     
-
-      console.log('filteredItems: ', filteredItems);
+      const filteredItemsByCategory = (items, searchByCategory) => {
+        return items?.filter(item => item.category.toLowerCase().includes(searchByCategory.toLowerCase()))
+      }
+    
+      const filterBy = (searchType, items, searchByTitle, searchByCategory) => {
+        if (searchType === 'BY_TITLE') {
+          return filteredItemsByTitle(items, searchByTitle)
+        }
+    
+        if (searchType === 'BY_CATEGORY') {
+          return filteredItemsByCategory(items, searchByCategory)
+        }
+    
+        if (searchType === 'BY_TITLE_AND_CATEGORY') {
+          return filteredItemsByCategory(items, searchByCategory).filter(item => item.name.toLowerCase().includes(searchByTitle.toLowerCase()))
+        }
+    
+        if (!searchType) {
+          return items
+        }
+      }
+    
+      useEffect(() => {
+        if (searchByTitle && searchByCategory) setFilteredItems(filterBy('BY_TITLE_AND_CATEGORY', items, searchByTitle, searchByCategory))
+        if (searchByTitle && !searchByCategory) setFilteredItems(filterBy('BY_TITLE', items, searchByTitle, searchByCategory))
+        if (!searchByTitle && searchByCategory) setFilteredItems(filterBy('BY_CATEGORY', items, searchByTitle, searchByCategory))
+        if (!searchByTitle && !searchByCategory) setFilteredItems(filterBy(null, items, searchByTitle, searchByCategory))
+      }, [items, searchByTitle, searchByCategory])
     return (
         <CarShopContext.Provider value={
             {
@@ -79,7 +104,9 @@ export const CarShopProvider=({children})=>{
                 setItems,
                 setSearchByTitle,
                 searchByTitle,
-                filteredItems
+                filteredItems,
+                searchByCategory,
+                setSearchByCategory
             }
         }>
             {children}

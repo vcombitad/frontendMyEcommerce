@@ -1,18 +1,15 @@
 import Layout from "../Layout";
 
 
-let slides=[
-    './assets/assets1.jpg',
-    './assets/assets2.jpg',
-    './assets/assets3.jpg'
-  ]
+
   
-const Carousel=({slides})=>{
+const Carousel=()=>{
+    
     return (
         <div className='flex flex-row w-full overflow-hidden relative'>
-            {slides.map((s)=>{
-                return <img className='h-44' src={s}/>
-            })}
+            <figure>
+                <img src="https://i.pinimg.com/originals/fc/3f/86/fc3f86b5f2034766d81dad0f2267d532.jpg" alt="" />
+            </figure>
         </div>
     );
 }

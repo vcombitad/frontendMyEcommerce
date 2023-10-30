@@ -3,12 +3,14 @@ import { useContext } from "react";
 import Card from "../../componentes/Card"
 import Layout from "../../componentes/Layout"
 import ProductDetail from "../../componentes/ProductDetail";
+import Carousel from "../../componentes/Carousel";
 
 function Home() {
   
   const context= useContext(CarShopContext)
+  
   const renderView = () => {
-    if (context.searchByTitle?.length > 0) {
+    
       if (context.filteredItems?.length > 0) {
         return (
           context.filteredItems?.map(item => (
@@ -19,21 +21,17 @@ function Home() {
         return (
           <div>We don't have anything :(</div>
         )
-      }
-    } else {
-      return (
-        context.items?.map(item => (
-          <Card key={item.id} data={item} />
-        ))
-      )
-    }
+      
+    } 
   }
   
     return (        
         <Layout>
+          <div></div>
+          <Carousel/>
       <div className='flex items-center justify-center relative w-80 mb-4'>
         <h1 className="font-medium text-xl ">
-          Home
+          Search your product
         </h1>
       </div>
       <input 

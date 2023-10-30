@@ -11,7 +11,7 @@ const ProductDetail=()=>{
 
 
     return (
-        <aside className={`${context.isProductDetailOpen ? 'flex' : 'hidden'} product-detail flex-col fixed bg-white right-0 border border-black rounded-lg}`}>
+        <aside className={`${context.isProductDetailOpen ? 'flex' : 'hidden'} overflow-y-scroll product-detail flex-col fixed bg-white right-0 border border-black rounded-lg}`}>
             <div className='flex justify-between items-center'>
                 <h2 className='font-medium text-xl p-6'>Detail</h2>
                 <div>
